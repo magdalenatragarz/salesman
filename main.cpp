@@ -1,10 +1,15 @@
-#include <solution/random_solution_factory.hpp>
-#include <solution/crossover_solution_factory.hpp>
+#include <graph/matrix_serializer.hpp>
+
+#include <iostream>
+#include <graph/adjacency_matrix.hpp>
+
 
 int main() {
-    auto random_factory = std::make_shared<genetics::random_solution_factory>();
-    auto crossover_factory = std::make_shared<genetics::crossover_solution_factory>();
 
-    random_factory->create_solution();
-    crossover_factory->create_solution();
+    auto serializer = std::make_shared<graph::matrix_serializer>();
+    auto matrix = std::make_shared<graph::adjacency_matrix>(serializer);
+
+    matrix->from_file(R"(D:\projects\salesman\graph_example.map)");
+    std::cout << matrix->get("Cracow", "Warsaw") << std::endl;
+
 }

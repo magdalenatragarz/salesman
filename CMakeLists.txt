@@ -6,12 +6,12 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS 1)
 
 add_subdirectory(googletest)
 
-add_subdirectory(map)
+add_subdirectory(graph)
 add_subdirectory(genetics)
 
 add_executable(salesman 
 	${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
 
-target_link_libraries(salesman PRIVATE map genetics)
+target_link_libraries(salesman PRIVATE graph genetics)
 
 install(TARGETS salesman DESTINATION build/)
