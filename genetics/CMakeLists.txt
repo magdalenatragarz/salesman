@@ -10,9 +10,7 @@ set(include_path
 target_include_directories(genetics PUBLIC ${include_path})
 target_link_libraries(genetics PRIVATE gtest)
 
-#if (TESTING_ENABLED)
- add_subdirectory(test)
-#endif()
+add_subdirectory(test)
 
 install(TARGETS genetics DESTINATION bin/)
 

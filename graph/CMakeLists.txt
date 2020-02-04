@@ -11,6 +11,8 @@ target_include_directories(graph PUBLIC ${include_path})
 
 target_link_libraries(graph PRIVATE gtest)
 
+add_subdirectory(test)
+
 install(TARGETS graph DESTINATION bin/)
 
 

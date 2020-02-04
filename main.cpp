@@ -1,15 +1,13 @@
-#include <graph/matrix_serializer.hpp>
-
 #include <iostream>
-#include <graph/adjacency_matrix.hpp>
+#include <memory>
+#include <graph/matrix.hpp>
+#include <graph/graph.hpp>
 
 
 int main() {
 
-    auto serializer = std::make_shared<graph::matrix_serializer>();
-    auto matrix = std::make_shared<graph::adjacency_matrix>(serializer);
+    auto graph = std::make_shared<graph::graph>(R"(D:\projects\salesman\graph_example.map)");
 
-    matrix->from_file(R"(D:\projects\salesman\graph_example.map)");
-    std::cout << matrix->get("Cracow", "Warsaw") << std::endl;
+    std::cout << graph->get_weight("Cracow", "Warsaw") << std::endl;
 
 }
