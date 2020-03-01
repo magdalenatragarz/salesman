@@ -15,10 +15,10 @@ namespace graph {
 class graph {
 
 public:
-    graph(std::string const& configuration_file);
+    explicit graph(std::string const& configuration_file_path);
 
-    int get_weight(std::string source, std::string destination);
-    int get_nodes_count();
+    int get_weight(int source, int destination) const;
+    int get_nodes_count() const;
 
 private:
     void from_file(std::string const& path);

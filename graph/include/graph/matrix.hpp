@@ -6,7 +6,6 @@ namespace graph {
 
 class matrix {
 public:
-
     matrix();
 
     int get(int const& x, int const& y);

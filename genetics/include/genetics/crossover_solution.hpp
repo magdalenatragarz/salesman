@@ -1,6 +1,6 @@
 #pragma once
 
-#include "solution.hpp"
+#include <genetics/solution.hpp>
 
 namespace genetics {
 
@@ -9,8 +9,12 @@ public:
     crossover_solution(std::shared_ptr<solution> mother, std::shared_ptr<solution> father);
 
 private:
-    std::vector<int> cross(std::shared_ptr<solution> mother,
-            std::shared_ptr<solution> father);
+    void cross(std::shared_ptr<solution> mother, std::shared_ptr<solution> father);
+    void fill_with_mother_genes(std::shared_ptr<solution> mother);
+    void fill_with_father_genes(std::shared_ptr<solution> father);
+    void perform_mutation();
+    bool is_present_in_genetic_material(int gene) const;
+
 };
 
 }

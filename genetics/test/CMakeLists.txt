@@ -5,6 +5,6 @@ file(GLOB tests "${CMAKE_CURRENT_SOURCE_DIR}/*")
 
 add_executable(genetics_test ${tests})
 
-target_link_libraries(genetics_test PRIVATE gtest genetics)
+target_link_libraries(genetics_test PRIVATE gtest gmock genetics)
 
 enable_testing()

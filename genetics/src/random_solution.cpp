@@ -1,14 +1,14 @@
 #include <genetics/random_solution.hpp>
 
-#include <iostream>
+#include <chrono>
+#include <random>
 
 namespace genetics {
 
-random_solution::random_solution(int size) {
-    for (int i = 0; i < size; i++) {
-        genetic_material.push_back(i);
-    }
+random_solution::random_solution(std::vector<int> const& genotype) {
+    genetic_material = genotype;
+    auto seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(genetic_material.begin(), genetic_material.end(), std::default_random_engine(seed));
 }
-
 
 }

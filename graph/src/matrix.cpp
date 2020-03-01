@@ -4,7 +4,6 @@ namespace graph {
 
 matrix::matrix(){
     resize();
-    resize();
 }
 
 

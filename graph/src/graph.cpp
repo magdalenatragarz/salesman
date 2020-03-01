@@ -8,14 +8,12 @@ graph::graph(std::string const& configuration_file){
 }
 
 
-int graph::get_weight(std::string source, std::string destination){
-    auto x = get_position(source);
-    auto y = get_position(destination);
-    return adjacency_matrix->get(x,y);
+int graph::get_weight(int source, int destination) const {
+    return adjacency_matrix->get(source, destination);
 }
 
 
-int graph::get_nodes_count() {
+int graph::get_nodes_count() const {
     return adjacency_matrix->get_dimension();
 }
 
@@ -33,6 +31,9 @@ void graph::from_file(std::string const& path) {
 
 std::string graph::read_from_file(std::string const& path) {
     auto file = std::ifstream(path);
+    if (!file)
+        throw std::logic_error("File does not exist");
+
     return std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 }
 

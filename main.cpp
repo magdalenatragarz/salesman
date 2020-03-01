@@ -1,20 +1,25 @@
+#include <evolution/map.hpp>
+#include <evolution/salesman_algorithm.hpp>
+
 #include <iostream>
 #include <memory>
-#include <graph/matrix.hpp>
-#include <genetics/random_solution.hpp>
-#include <genetics/crossover_solution.hpp>
+#include <chrono>
 
 
 int main() {
-    auto solution_1 = std::make_shared<genetics::random_solution>(5);
-    auto solution_2 = std::make_shared<genetics::random_solution>(5);
 
-    solution_1->genetic_material.assign({1, 7, 2, 3, 4, 5, 6});
-    solution_2->genetic_material.assign({7, 2, 5, 1, 4, 6, 3});
+    std::string file_path = "D:\\projekty\\salesman_parser\\15cities.map";
+    auto map = std::make_shared<evolution::map>(file_path);
 
-    auto x = std::make_shared<genetics::crossover_solution>(solution_1, solution_2);
+    auto algorithm = std::make_shared<evolution::salesman_algorithm>(map, 50);
 
-    for (auto&  a : x->get_genetic_material())
-        std::cout << a;
+    auto start = std::chrono::steady_clock::now();
+    algorithm->run();
+    auto end = std::chrono::steady_clock::now();
+
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << " ns" << std::endl;
+    std::cout << "path: " <<  algorithm->get_best_solution() << std::endl;
+    std::cout << "distance: " << algorithm->get_best_solution()->get_distance() << std::endl;
+
 
 }

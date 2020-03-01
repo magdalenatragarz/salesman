@@ -6,7 +6,7 @@ namespace genetics {
 
 class random_solution : public solution {
 public:
-	random_solution(int size);
+	explicit random_solution(std::vector<int> const& genotype);
 
 };
 
