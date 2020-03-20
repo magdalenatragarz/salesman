@@ -1,0 +1,11 @@
+// this is ignored comment line
+// file is graph representation
+// first and second column correspond to names of verticles between which edge is present
+// third column is weight of the edge
+
+Cracow Warsaw 50
+Wroclove Warsaw 150
+Wroclove Cracow 900
+Katowice Cracow 70
+Katowice Warsaw 93
+Katowice Wroclove 82
