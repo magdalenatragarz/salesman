@@ -12,8 +12,6 @@ target_include_directories(evolution PUBLIC ${include_path})
 
 target_link_libraries(evolution PRIVATE graph genetics)
 
-add_subdirectory(test)
-
 install(TARGETS evolution DESTINATION bin/)
 
 
