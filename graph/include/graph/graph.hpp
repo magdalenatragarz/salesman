@@ -22,17 +22,17 @@ public:
 
 private:
     void from_file(std::string const& path);
-    std::string read_from_file(std::string const& path);
-    std::vector<std::shared_ptr<edge>> deserialize(std::string content);
-    void add_node(std::shared_ptr<node> node);
-    void add_edge(std::shared_ptr<edge> edge);
-    std::shared_ptr<edge> create_edge(std::string line);
-    std::tuple<std::shared_ptr<node>, std::shared_ptr<node>, int> parse_edge_components(std::string line);
-    bool is_comment(std::string const& line);
-    int get_position(std::string const& node_name);
-    bool node_exists(std::shared_ptr<node> node);
+    std::string read_from_file(std::string const& path) const;
+    std::vector<edge> deserialize(const std::string &content);
+    void add_node(const node &new_node);
+    void add_edge(const edge &new_edge);
+    edge create_edge(const std::string &line);
+    std::tuple<node, node, int> parse_edge_components(const std::string &line) const;
+    bool is_comment(std::string const& line) const;
+    int get_position(std::string const& node_name) const;
+    bool node_exists(const node &checked_node) const;
 
-    std::shared_ptr<matrix> adjacency_matrix;
+    matrix adjacency_matrix;
     std::vector<std::string> nodes_names{};
 
 };

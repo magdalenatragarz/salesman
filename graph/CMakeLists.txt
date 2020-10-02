@@ -10,6 +10,8 @@ add_library(graph STATIC ${graph_sources})
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 target_include_directories(graph PUBLIC ${include_path})
 
+add_subdirectory(testing)
+
 install(TARGETS graph DESTINATION bin/)
 
 

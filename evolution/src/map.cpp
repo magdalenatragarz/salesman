@@ -2,10 +2,7 @@
 
 namespace evolution {
 
-map::map(std::string configuration_string) {
-    graph_representation = std::make_shared<graph::graph>(configuration_string);
-}
-
+map::map(const std::string &configuration_string) : graph_representation(configuration_string) {}
 
 int map::get_absolute_distance(std::vector<int> path) const {
     auto absolute_distance = 0;
@@ -17,14 +14,12 @@ int map::get_absolute_distance(std::vector<int> path) const {
     return absolute_distance;
 }
 
-
 int map::get_distance(int lhs_city_id, int rhs_city_id) const {
-    return graph_representation->get_weight(lhs_city_id, rhs_city_id);
+    return graph_representation.get_weight(lhs_city_id, rhs_city_id);
 }
 
-
 int map::get_cities_count() const{
-    return graph_representation->get_nodes_count();
+    return graph_representation.get_nodes_count();
 }
 
 }

@@ -2,7 +2,8 @@
 
 namespace evolution {
 
-population_factory::population_factory(std::vector<int> genotype) : genotype(genotype) {}
+population_factory::population_factory(std::vector<int> genotype)
+    : genotype(std::move(genotype)) {}
 
 std::vector<std::shared_ptr<genetics::solution>> population_factory::generate_population() {
     constexpr auto population_size_multiplier = 100;

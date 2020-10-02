@@ -9,6 +9,7 @@
 namespace evolution {
 
 class population_factory {
+
 public:
     explicit population_factory(std::vector<int> genotype);
 
@@ -17,6 +18,7 @@ public:
 private:
     std::vector<std::shared_ptr<genetics::solution>> population{};
     std::vector<int> genotype;
+
 };
 
 }

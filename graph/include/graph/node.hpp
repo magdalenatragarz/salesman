@@ -7,7 +7,7 @@ namespace graph {
 class node {
 public:
     explicit node(std::string name);
-    std::string const get_name() const;
+    std::string get_name() const;
 
 private:
     std::string name;

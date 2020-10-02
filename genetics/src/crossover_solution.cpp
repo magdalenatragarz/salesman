@@ -5,12 +5,13 @@
 
 namespace genetics {
 
-crossover_solution::crossover_solution(std::shared_ptr<solution> mother, std::shared_ptr<solution> father) {
-    cross(std::move(mother), std::move(father));
+crossover_solution::crossover_solution(std::shared_ptr<genetics::solution> mother,
+        std::shared_ptr<genetics::solution> father) {
+    cross(mother, father);
 }
 
 
-void crossover_solution::cross(std::shared_ptr<solution> mother, std::shared_ptr<solution> father) {
+void crossover_solution::cross(std::shared_ptr<genetics::solution> mother, std::shared_ptr<genetics::solution> father) {
 
     if (!father->fit_to(mother))
         throw std::logic_error("Mother and father have different genetic material lengths.");
@@ -22,7 +23,7 @@ void crossover_solution::cross(std::shared_ptr<solution> mother, std::shared_ptr
 }
 
 
-void crossover_solution::fill_with_mother_genes(std::shared_ptr<solution> mother) {
+void crossover_solution::fill_with_mother_genes(std::shared_ptr<genetics::solution> mother) {
     auto genes_quantity = mother->get_genetic_material_size();
     auto mother_genes_quantity = genes_quantity / 2;
 
@@ -31,7 +32,7 @@ void crossover_solution::fill_with_mother_genes(std::shared_ptr<solution> mother
 }
 
 
-void crossover_solution::fill_with_father_genes(std::shared_ptr<solution> father) {
+void crossover_solution::fill_with_father_genes(std::shared_ptr<genetics::solution> father) {
     for (auto& father_gene : father->get_genetic_material()) {
         if (is_present_in_genetic_material(father_gene))
             continue;

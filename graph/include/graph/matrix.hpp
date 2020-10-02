@@ -8,9 +8,9 @@ class matrix {
 public:
     matrix();
 
-    int get(int const& x, int const& y);
-    int get_dimension();
-    void set(int const& x, int const& y, int const& value);
+    int get(const int &x, const int &y) const;
+    int get_dimension() const;
+    void set(const int &x, const int &y, const int &value);
 
 private:
     void resize();

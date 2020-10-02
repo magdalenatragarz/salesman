@@ -8,15 +8,15 @@ namespace graph {
 
 class edge {
 public:
-    edge(std::shared_ptr<graph::node> source, std::shared_ptr<graph::node> destination, int weight);
+    edge(graph::node source, graph::node destination, int weight);
 
-    std::shared_ptr<graph::node> get_source() const;
-    std::shared_ptr<graph::node> get_destination() const;
+    graph::node get_source() const;
+    graph::node get_destination() const;
     int get_weight() const;
 
 private:
-    std::shared_ptr<graph::node> source;
-    std::shared_ptr<graph::node> destination;
+    graph::node source;
+    graph::node destination;
     int weight;
 };
 

@@ -1,5 +1,4 @@
 #include <genetics/solution.hpp>
-#include <iostream>
 
 namespace genetics {
 
@@ -13,15 +12,12 @@ void solution::mutate() {
     perform_random_mutation(mutations);
 }
 
-
 void solution::perform_random_mutation(std::vector<std::function<void()>> mutations) {
     auto chosen_mutation_index =  std::random_device()() % mutations.size();
     mutations.at(chosen_mutation_index)();
 }
 
-
 void solution::no_mutation() {}
-
 
 void solution::element_switch_mutation() {
     auto first_of_swapped = std::random_device()() % (get_genetic_material_size() - 1);
@@ -30,7 +26,6 @@ void solution::element_switch_mutation() {
     std::swap(genetic_material[first_of_swapped],
               genetic_material[second_of_swapped]);
 }
-
 
 void solution::block_switch_mutation() {
     auto length_of_block = std::random_device()() % (get_genetic_material_size() / 2);
@@ -55,13 +50,12 @@ int solution::get_gene(int index) const {
 }
 
 
-bool solution::fit_to(std::shared_ptr<solution> soulmate) const {
+bool solution::fit_to(std::shared_ptr<genetics::solution> soulmate) const {
     return get_genetic_material_size() == soulmate->get_genetic_material_size();
 }
 
-
-std::ostream & operator << (std::ostream &out, const std::shared_ptr<genetics::solution> &s) {
-    for (auto& gene: s->get_genetic_material())
+std::ostream & operator << (std::ostream &out, std::shared_ptr<genetics::solution> rhs) {
+    for (auto& gene: rhs->get_genetic_material())
         out << std::to_string(gene);
     return out;
 }
